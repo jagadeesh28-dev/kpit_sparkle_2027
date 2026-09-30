@@ -3,7 +3,7 @@
 **Generated:** 2026-09-30 — Final Release Evidence Integrity Gate  
 **Audit Scope:** Read-only verification against running source code and test suite  
 **Test Baseline:** `python -m pytest tests/ -q` → **220 passed, 0 failed, 0 skipped**  
-**HEAD Commit:** `26ce5b9b59038c56000572ab19e6feb8a671f6d5`
+**HEAD Commit:** `0536543b981bdb9d4cc904f61e9cea4b4992ef5d`
 
 > **Rule applied:** A subsystem is counted as covered only if it has at least one test that
 > directly imports and exercises the subsystem class/function under test, and that test would

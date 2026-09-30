@@ -12,10 +12,10 @@
 | Field | Value |
 |-------|-------|
 | Branch | `main` |
-| HEAD (audit commit) | `26ce5b9b59038c56000572ab19e6feb8a671f6d5` |
+| HEAD (final commit) | `0536543b981bdb9d4cc904f61e9cea4b4992ef5d` |
 | Release commit | `13a368ba8955e6f58398dce0a0834792823f2f2b` |
 | Working tree | **CLEAN** (after this audit commit) |
-| Git log (last 3) | `26ce5b9` docs(audit) → `13a368b` feat(release) → `ffc284c` initial prototype |
+| Git log (last 4) | `0536543` audit(evidence-integrity) → `26ce5b9` docs(audit) → `13a368b` feat(release) → `ffc284c` initial prototype |
 
 ---
 
@@ -258,7 +258,7 @@ These measurements must not be generalised to production-scale automotive codeba
 |-----------|-----------------|---------------|
 | Test count | 214 | **220** |
 | Release commit | `ffc284...` | **`13a368...`** |
-| HEAD commit | `ffc284...` | **`26ce5b9...`** |
+| HEAD commit | `ffc284...` | **`0536543b...`** |
 | Gate 21 | 214 tests | **220 tests** |
 | Gate 23 | 214 passed | **220 passed** |
 | Gate 24 | "clean-room bit-for-bit" | **"fresh deterministic regeneration"** |

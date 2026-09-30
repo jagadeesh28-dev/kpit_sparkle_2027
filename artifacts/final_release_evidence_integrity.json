@@ -6,7 +6,7 @@
   "git": {
     "branch": "main",
     "release_commit": "13a368ba8955e6f58398dce0a0834792823f2f2b",
-    "head_commit": "26ce5b9b59038c56000572ab19e6feb8a671f6d5",
+    "head_commit": "0536543b981bdb9d4cc904f61e9cea4b4992ef5d",
     "working_tree_clean": true
   },
   "gates": {
@@ -98,7 +98,7 @@
   "documentation": {
     "project_status_authoritative": true,
     "project_status_test_count": 220,
-    "project_status_head_commit": "26ce5b9b59038c56000572ab19e6feb8a671f6d5",
+    "project_status_head_commit": "0536543b981bdb9d4cc904f61e9cea4b4992ef5d",
     "project_status_release_commit": "13a368ba8955e6f58398dce0a0834792823f2f2b",
     "ci_status": "IMPLEMENTED_AND_LOCALLY_VALIDATED",
     "gate_24_scope": "Fresh Deterministic Benchmark Regeneration on host (Windows 11 / Python 3.14.0)",
