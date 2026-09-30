@@ -198,7 +198,14 @@ class AuraImpactPipeline:
         cpp_parser = CppTreeSitterParser()
         for c_path in scanned["c_source"]:
             fns, vars_found = cpp_parser.parse_records(c_path)
-            subsystem = "Powertrain" if "powertrain" in str(c_path).lower() else ("Battery_EV" if "bms" in str(c_path).lower() else "ADAS")
+            if "body" in str(c_path).lower():
+                subsystem = "Body_Electronics"
+            elif "powertrain" in str(c_path).lower():
+                subsystem = "Powertrain"
+            elif "bms" in str(c_path).lower() or "battery" in str(c_path).lower():
+                subsystem = "Battery_EV"
+            else:
+                subsystem = "ADAS"
 
             for fn in fns:
                 fn_node = GraphNode(
@@ -327,14 +334,19 @@ class AuraImpactPipeline:
                        threshold_override: Optional[float] = None,
                        mandatory_safety_tests: Optional[Set[str]] = None,
                        repo_dir: Optional[Path] = None,
-                       enforce_freshness: bool = False) -> Tuple[ImpactEngineResult, RegressionSelectionResult, AnalysisEvidenceReport]:
+                       enforce_freshness: bool = False,
+                       force_semantic: bool = False) -> Tuple[ImpactEngineResult, RegressionSelectionResult, AnalysisEvidenceReport]:
         if enforce_freshness:
             is_stale, stale_reasons = self.check_staleness(repo_dir)
             if is_stale:
                 raise StaleIndexError(f"Semantic/Graph index is stale: {stale_reasons}")
 
         # 1. Run Impact Engine
-        impact_res = self.impact_engine.analyze_change(change, threshold_override=threshold_override)
+        impact_res = self.impact_engine.analyze_change(
+            change,
+            threshold_override=threshold_override,
+            force_semantic=force_semantic
+        )
 
         # 2. Run Test Selection with Safety Gate
         test_res = self.regression_selector.select(

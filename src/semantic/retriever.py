@@ -50,7 +50,7 @@ class ContextualRetriever:
             return []
 
         query_vec = self.embedder.embed_text(query_text)
-        subsystem_filter = query_context.get("subsystem")
+        subsystem_filter = query_context.get("subsystem") if query_context.get("filter_subsystem_in_index", True) else None
         raw_candidates = self.index.search(query_vec, top_k=self.top_k, subsystem_filter=subsystem_filter)
 
         results: List[RetrievedCandidate] = []

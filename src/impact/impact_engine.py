@@ -43,7 +43,8 @@ class TwoStageImpactEngine:
 
     def analyze_change(self,
                        change: ChangedArtifact,
-                       threshold_override: Optional[float] = None) -> ImpactEngineResult:
+                       threshold_override: Optional[float] = None,
+                       force_semantic: bool = False) -> ImpactEngineResult:
         start_time = time.perf_counter()
 
         # =====================================================================
@@ -86,15 +87,23 @@ class TwoStageImpactEngine:
         review_required: List[RetrievedCandidate] = []
         s2_latency = 0.0
 
-        # Invoke Stage 2 if zero structural impacts OR incomplete coverage
-        if self.semantic_fallback is not None and (not structural_complete or len(structural_impacts) == 0):
+        # Invoke Stage 2 if zero structural impacts OR incomplete coverage OR force_semantic requested
+        should_run_semantic = (
+            force_semantic
+            or change.metadata.get("force_semantic", False)
+            or not structural_complete
+            or len(structural_impacts) == 0
+        )
+
+        if self.semantic_fallback is not None and should_run_semantic:
             s2_start = time.perf_counter()
             query_ctx = {
                 "artifact_id": change.artifact_id,
                 "subsystem": change.subsystem,
                 "artifact_type": change.artifact_type,
                 "ecu": change.ecu,
-                "metadata": change.metadata
+                "metadata": change.metadata,
+                "filter_subsystem_in_index": change.metadata.get("filter_subsystem_in_index", True)
             }
             query_text = change.change_semantics or change.after_content or change.artifact_id
 
