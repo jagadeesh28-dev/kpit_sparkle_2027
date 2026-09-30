@@ -108,7 +108,7 @@ The canonical benchmark was reconstructed, validated, and verified across two in
 | Evaluation Dimension | Graph-Only Baseline | AURA Hybrid (Architecture B) | Delta / Improvement |
 | :--- | :---: | :---: | :---: |
 | **Headline Artifact Recall** | 0.6307 (63.07%) | **0.6311 (63.11%)** | **+0.0004 (+0.04%)** |
-| **Average Test Suite Reduction** | 84.4% | **84.4%** | Optimal test suite size |
+| **Average Test Suite Reduction** | 82.29% | **82.29%** | Optimal test suite size |
 | **Safety Invariant Enforcement** | 100.0% (150/150) | **100.0% (150/150)** | Zero safety violations |
 | **Reproducibility Hash Match** | N/A | **100% Bit-for-Bit Identical** | Fully deterministic |
 | **Benchmark Execution Time** | ~11.0 s | **11.37 s** | ~75 ms per mutation |

@@ -109,7 +109,7 @@ ChangedArtifact
     |
     v (only if structural coverage incomplete OR zero structural impacts found)
 [Stage 2] SemanticFallback.recover()
-    - Embeds query text via SemanticEmbedder (custom hash-based, named "BGE-M3")
+    - Embeds query text via SemanticEmbedder (AURA-DomainHashEmbedder-384, deterministic hash-based)
     - Searches FAISSSemanticIndex (or NumPy cosine fallback)
     - ContextFilter rejects cross-subsystem and incompatible artifact types
     - Produces: semantic_impacts, all_candidates, review_required
