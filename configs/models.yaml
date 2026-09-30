@@ -1,3 +1,8 @@
+# ==============================================================================
+# HISTORICAL ARCHIVE — DO NOT USE FOR PRODUCTION RUNTIME
+# Historical model references from initial exploratory baseline evaluations.
+# Canonical runtime model is AURA-DomainHashEmbedder-384 in configs/final.yaml.
+# ==============================================================================
 models:
   embedding:
     primary: "all-MiniLM-L6-v2"

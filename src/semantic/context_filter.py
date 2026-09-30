@@ -77,6 +77,24 @@ class ContextFilter:
             applied_rules=rules
         )
 
+    def passes_hard_filter(
+            self,
+            source_subsystem: str,
+            candidate_subsystem: str,
+            candidate_type: str,
+            raw_cosine: float
+    ) -> bool:
+        """
+        Hard subsystem isolation gate (VARIANT_C).
+        Returns False only when candidate is clearly out-of-domain.
+        """
+        if self.enforce_subsystem and source_subsystem and candidate_subsystem:
+            s1 = source_subsystem.lower().replace("_", "").replace(" ", "")
+            s2 = candidate_subsystem.lower().replace("_", "").replace(" ", "")
+            if s1 != s2 and s1 not in s2 and s2 not in s1:
+                return False
+        return True
+
     def compute_context_score(self,
                               source_artifact_id: str = "",
                               source_artifact_type: str = "",
@@ -92,7 +110,28 @@ class ContextFilter:
         else:
             score -= 0.30
         score = max(0.0, min(1.0, score))
-        return {"context_score": score, "final_score": score, "passed": score >= 0.5, "applied_rules": {}}
+        # Estimate graph distance via eng_graph if available
+        graph_distance = -1
+        if self.eng_graph is not None:
+            try:
+                import networkx as nx
+                if source_artifact_id and candidate_id:
+                    try:
+                        graph_distance = nx.shortest_path_length(
+                            self.eng_graph.graph, source_artifact_id, candidate_id
+                        )
+                    except (nx.NetworkXNoPath, nx.NodeNotFound):
+                        graph_distance = 99
+            except Exception:
+                graph_distance = -1
+        return {
+            "context_score":      score,
+            "final_score":        score,
+            "passed":             score >= 0.5,
+            "applied_rules":      {},
+            "graph_distance":     graph_distance,
+            "trace_support_score": min(1.0, score + 0.1),
+        }
 
 
 # Backward-compatible alias

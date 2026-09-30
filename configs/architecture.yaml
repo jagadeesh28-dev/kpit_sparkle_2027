@@ -12,7 +12,7 @@ graph:
 
 semantic:
   enabled: true
-  model: "BGE-M3"
+  model: "AURA-DomainHashEmbedder-384"
   embedding_dimension: 384
   threshold: 0.45
   top_k: 10

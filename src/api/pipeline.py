@@ -3,7 +3,7 @@ AURA-Impact End-to-End Execution Pipeline (Locked Architecture B)
 Orchestrates ingestion, graph construction, semantic indexing, two-stage impact analysis, safety-gated test selection, and evidence generation.
 """
 from pathlib import Path
-from typing import Dict, Any, List, Optional, Tuple
+from typing import Dict, Any, List, Optional, Tuple, Set
 import yaml
 import time
 
@@ -52,7 +52,7 @@ class AuraImpactPipeline:
         # Core components
         self.graph = EngineeringGraph(project_id="AURA_SYSTEM")
         self.embedder = SemanticEmbedder(
-            model_name=self.configs.get("semantic", {}).get("model", "BGE-M3"),
+            model_name=self.configs.get("semantic", {}).get("model", "AURA-DomainHashEmbedder-384"),
             dimension=self.configs.get("semantic", {}).get("embedding_dim", 384)
         )
         self.index = FAISSSemanticIndex(dimension=self.embedder.dimension)

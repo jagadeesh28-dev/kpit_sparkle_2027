@@ -3,7 +3,7 @@ Context-Aware Semantic Retrieval Engine (v2.0)
 Retrieves semantic candidates and enriches them with engineering context scores.
 """
 from typing import List, Dict, Any, Optional
-from src.semantic.index import SemanticIndex
+from src.semantic.index import SemanticIndex, FAISS_AVAILABLE  # re-exported for introspection
 from src.semantic.context_filter import EngineeringContextFilter
 
 
@@ -37,13 +37,37 @@ class SemanticRetriever:
         exclude = set(exclude_node_ids or [])
         subsystem = project if project else source_subsystem
 
-        # 1. Raw Vector Index Search (collect top candidates)
-        raw_results = self.index.search(
-            query_text=change_text,
-            threshold=0.20 if mode != "VARIANT_A" else th,  # lower pre-filter threshold for contextual ranking
-            top_k=top_k * 3 if top_k else 50,
-            filter_project=subsystem
+        # 1. Embed query text → dense vector (AURA-DomainHashEmbedder-384)
+        if hasattr(self.index, "embedder") and self.index.embedder is not None:
+            query_vec = self.index.embedder.embed_text(change_text)
+        else:
+            import numpy as _np
+            import hashlib as _hl
+            import re as _re
+            _dim = getattr(self.index, "dimension", 384)
+            _vec = _np.zeros(_dim, dtype=_np.float32)
+            for _tok in _re.findall(r"\b[a-z0-9_]+\b", change_text.lower()):
+                _vec[int(_hl.md5(_tok.encode()).hexdigest(), 16) % _dim] += 1.0
+            _n = _np.linalg.norm(_vec)
+            query_vec = _vec / _n if _n > 1e-6 else _vec
+
+        # 2. Raw Vector Index Search (collect top candidates)
+        pre_top_k = (top_k * 3) if top_k else 50
+        raw_tuples = self.index.search(
+            query_vec=query_vec,
+            top_k=pre_top_k,
+            subsystem_filter=subsystem if mode != "VARIANT_A" else None,
         )
+        # Normalise: index.search returns List[Tuple[IndexedArtifact, float]]
+        raw_results = []
+        for item, score in raw_tuples:
+            raw_results.append({
+                "id":         item.artifact_id,
+                "name":       item.artifact_id,
+                "type":       item.artifact_type,
+                "project":    item.subsystem,
+                "similarity": float(score),
+            })
 
         candidates = []
         for r in raw_results:

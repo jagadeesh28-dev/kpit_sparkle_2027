@@ -1,6 +1,8 @@
 """
 Semantic Embedder
-Implements BGE-M3 / deterministic automotive embedding with domain concept projection.
+Implements AURA-DomainHashEmbedder-384: A deterministic automotive domain-concept
+hash vectorizer with ontology projection and L2 unit hypersphere normalization.
+Provides microsecond latency and zero external neural model weight dependencies.
 """
 from typing import List, Dict, Any, Optional
 import numpy as np
@@ -9,12 +11,14 @@ import hashlib
 
 
 class SemanticEmbedder:
-    """Computes dense normalized embeddings for engineering artifact texts."""
+    """Computes dense normalized embeddings for engineering artifact texts using deterministic domain hashing."""
 
-    def __init__(self, model_name: str = "BGE-M3", dimension: int = 384, device: str = "cpu", **kwargs):
+    def __init__(self, model_name: str = "AURA-DomainHashEmbedder-384", dimension: int = 384, device: str = "cpu", **kwargs):
         self.model_name = model_name
         self.dimension = dimension
         self.device = device
+        self.is_neural = False
+        self.model_type = "deterministic_domain_hash_vectorizer"
 
         # Automotive domain concept ontology for high-fidelity semantic alignment
         self.domain_concepts = {

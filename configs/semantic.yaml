@@ -1,5 +1,5 @@
 # Semantic Retrieval & Context Filter Configuration
-model_name: "BGE-M3"
+model_name: "AURA-DomainHashEmbedder-384"
 embedding_dim: 384
 similarity_metric: "cosine"
 threshold: 0.45

@@ -1,6 +1,11 @@
+# ==============================================================================
+# HISTORICAL ARCHIVE — DO NOT USE FOR PRODUCTION RUNTIME
+# Frozen configuration used in historical v6 benchmark evaluations.
+# Canonical runtime configuration is defined in configs/final.yaml.
+# ==============================================================================
 frozen_configuration:
-  version: "2.0.0"
-  status: "FROZEN_FOR_BENCHMARK"
+  version: "2.0.0-HISTORICAL"
+  status: "ARCHIVED_BENCHMARK_SWEEP"
   timestamp: "2026-08-31"
 
   impact_boundary:
