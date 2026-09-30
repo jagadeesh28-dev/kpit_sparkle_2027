@@ -4,7 +4,7 @@
 [![Status: Research Prototype](https://img.shields.io/badge/Status-Research%20Prototype-orange.svg?style=for-the-badge)](#project-status--maturity-level)
 [![Architecture: Locked B](https://img.shields.io/badge/Architecture-Bounded%20Graph%20%2B%20Strict%20Union%20Fallback-008080.svg?style=for-the-badge)](#locked-architecture-architecture-b)
 [![Safety Invariant](https://img.shields.io/badge/ISO%2026262-100%25%20Mandatory%20Safety%20Retention-success.svg?style=for-the-badge)](#safety-guarantee--invariant-distinction)
-[![Tests Passing](https://img.shields.io/badge/Tests-214%20Passed%20%7C%2026%20Gates%20Verified-brightgreen.svg?style=for-the-badge)](#testing--verification)
+[![Tests Passing](https://img.shields.io/badge/Tests-220%20Passed%20%7C%2026%20Gates%20Verified-brightgreen.svg?style=for-the-badge)](#testing--verification)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue.svg?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 
 ---
@@ -149,7 +149,7 @@ KPIT_2026_aura_impact/
 ├── benchmark/final/                   # Canonical Final Benchmark Runner & Config
 ├── reports/final/                     # Comprehensive Forensic Audit & Gate Reports
 ├── artifacts/gates/                   # Formal Gate Decision JSONs (stage_0 through stage_25)
-├── tests/                             # Comprehensive 214-Test Regression Suite
+├── tests/                             # Comprehensive 220-Test Regression Suite
 │   ├── benchmark/                     # Final benchmark, metric integrity, leakage, repro
 │   ├── cli/                           # Subprocess CLI integration tests
 │   ├── dashboard/                     # Dashboard programmatic validation tests
@@ -185,7 +185,7 @@ pip install -r requirements.txt
 ```bash
 python -m pytest tests/ -v
 ```
-*Executes all 214 unit, integration, benchmark, safety, failure-injection, CLI, and dashboard validation tests.*
+*Executes the complete 220-test regression and validation suite.*
 
 ### 4. Run Canonical Benchmark
 ```bash
