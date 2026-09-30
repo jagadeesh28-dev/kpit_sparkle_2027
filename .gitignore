@@ -46,3 +46,7 @@ htmlcov/
 # OS files
 .DS_Store
 Thumbs.db
+
+# Runtime test analysis dumps
+reports/analysis/ANALYSIS_REQ_AEB_014_1790*
+

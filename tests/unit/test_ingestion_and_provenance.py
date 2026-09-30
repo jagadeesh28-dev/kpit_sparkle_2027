@@ -21,7 +21,7 @@ from src.testing.safety_gate import SafetyGate
 from src.parsers.test_parser import TestRecord
 
 
-def test_artifact_loader_scans_categories(tmp_path):
+def test_artifact_loader_behavior(tmp_path):
     (tmp_path / "swc.arxml").write_text("<AUTOSAR/>", encoding="utf-8")
     (tmp_path / "engine_ctrl.c").write_text("void step() {}", encoding="utf-8")
     (tmp_path / "req_spec_01.json").write_text('{"id": "REQ-1"}', encoding="utf-8")
@@ -35,11 +35,24 @@ def test_artifact_loader_scans_categories(tmp_path):
     assert len(scanned["requirements"]) == 1
     assert len(scanned["tests"]) == 1
 
-
-def test_artifact_loader_missing_dir():
-    loader = ArtifactLoader(Path("non_existent_directory_xyz_123"))
     with pytest.raises(FileNotFoundError):
-        loader.scan()
+        ArtifactLoader(Path("non_existent_directory_xyz_123")).scan()
+
+
+def test_impact_union_strict_set_union():
+    from src.impact.impact_union import Impact, ImpactUnion, ImpactType, SourceStage
+    s1 = Impact("A", "C_FUNCTION", "ADAS", "ECU_1", ImpactType.STRUCTURAL, 1.0, SourceStage.GRAPH)
+    s2 = Impact("B", "C_FUNCTION", "ADAS", "ECU_1", ImpactType.STRUCTURAL, 1.0, SourceStage.GRAPH)
+    sem1 = Impact("B", "C_FUNCTION", "ADAS", "ECU_1", ImpactType.SEMANTIC, 0.8, SourceStage.SEMANTIC)
+    sem2 = Impact("C", "C_FUNCTION", "ADAS", "ECU_1", ImpactType.SEMANTIC, 0.85, SourceStage.SEMANTIC)
+
+    union_res = ImpactUnion.compute_union([s1, s2], [sem1, sem2])
+    ids = {imp.artifact_id for imp in union_res}
+    assert ids == {"A", "B", "C"}
+    # Structural takes precedence for duplicate key B
+    b_imp = next(imp for imp in union_res if imp.artifact_id == "B")
+    assert b_imp.source_stage == SourceStage.GRAPH
+    assert b_imp.confidence == 1.0
 
 
 def test_git_diff_parser_json(tmp_path):

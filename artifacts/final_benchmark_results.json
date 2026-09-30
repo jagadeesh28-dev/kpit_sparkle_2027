@@ -1,6 +1,6 @@
 {
   "version": "GATE-14-v2.0.0",
-  "timestamp": "2026-09-30T04:13:57.816234+00:00",
+  "timestamp": "2026-09-30T04:47:36.756671+00:00",
   "seed": 42,
   "dataset_fingerprint": "3bc8c11efb2398a0",
   "canonical_config": "C:\\Users\\USER\\OneDrive\\Desktop\\KPIT_2026_aura_impact\\configs\\final.yaml",
@@ -54,7 +54,7 @@
     "significant_recall": false,
     "significant_prec": false
   },
-  "run_duration_s": 2.53,
+  "run_duration_s": 3.45,
   "outputs": {
     "impact_csv": "benchmark/final/outputs/impact_results.csv",
     "regression_csv": "benchmark/final/outputs/regression_results.csv",
