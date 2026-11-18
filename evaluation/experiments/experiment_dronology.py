@@ -164,3 +164,4 @@ if __name__ == "__main__":
     summary = df_res.groupby(["deletion_rate", "method"])[["precision", "recall", "f1", "fpr", "safety_retention_pct", "latency_ms"]].mean().reset_index()
     print("\n--- Summary Performance by Deletion Rate ---")
     print(summary.to_string(index=False))
+

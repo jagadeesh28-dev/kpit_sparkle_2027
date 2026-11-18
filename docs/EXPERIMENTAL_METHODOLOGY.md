@@ -102,3 +102,4 @@ $$\text{Safety Retention} = \frac{|T_{\text{selected}} \cap T_{\text{safe}}|}{|T
 Paired **Wilcoxon Signed-Rank Test** across paired scenario observations:
 $$W = \min(W^+, W^-), \quad \alpha = 0.05$$
 Results are considered statistically significant if $p < 0.05$.
+

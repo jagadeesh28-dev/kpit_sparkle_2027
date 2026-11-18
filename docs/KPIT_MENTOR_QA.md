@@ -206,3 +206,4 @@ Through hostile adversarial unit tests in `tests/safety/test_safety_gate_hardeni
 ### Q32: What is the single most important message you want judges to remember?
 **Answer:**
 **"Deterministic engineering evidence must always precede AI. Where structural proof exists, trust it. Where links are missing, recover them semantically with strict context filtering. And above all, never let an optimization algorithm compromise a human safety invariant."**
+

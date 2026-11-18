@@ -129,3 +129,4 @@ if __name__ == "__main__":
     summary = df_res.groupby("method")[["precision", "recall", "f1", "fpr", "latency_ms"]].mean().reset_index()
     print("\n--- Summary Performance on Autoware.Universe ---")
     print(summary.to_string(index=False))
+

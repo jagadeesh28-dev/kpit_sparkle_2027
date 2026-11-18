@@ -128,3 +128,4 @@ if __name__ == "__main__":
     summary = df_res.groupby("method")[["test_recall", "test_precision", "test_reduction", "latency_ms"]].mean().reset_index()
     print("\n--- Summary Performance on Defects4J ---")
     print(summary.to_string(index=False))
+

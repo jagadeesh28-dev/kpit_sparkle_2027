@@ -147,3 +147,4 @@ When an artifact has ambiguous classification or missing trace links:
 1. It is flagged as `REVIEW_REQUIRED`.
 2. The safety gate fails closed: if an artifact might be safety-critical, its associated tests are retained by default.
 3. If an explicit bypass is attempted, the system raises a `SafetyInvariantViolationError` and halts continuous deployment.
+

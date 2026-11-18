@@ -233,3 +233,4 @@ class PublicationPlotter:
 
         fig.savefig(self.output_dir / "fig08_dataset_cross_comparison.png")
         plt.close(fig)
+

@@ -104,3 +104,4 @@ python benchmark/final/runner.py
 | **Publication Figures** | `results/plots/*.png` (8 Figures) | High-DPI publication charts |
 | **Master Evidence JSON** | `results/evidence/evaluation_master_evidence.json` | Complete cryptographic JSON trace |
 | **Dataset Manifest** | `data/manifests/dataset_manifest.json` | Download provenance & SHA-256 hashes |
+

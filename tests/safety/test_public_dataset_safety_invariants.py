@@ -76,3 +76,4 @@ def test_safety_gate_apply_union():
     final_suite = gate.apply_safety_gate(candidate_tests, mandatory_tests)
     assert mandatory_tests.issubset(final_suite)
     assert len(final_suite) == 4
+

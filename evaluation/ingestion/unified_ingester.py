@@ -438,3 +438,4 @@ class UnifiedIngester:
         with open(co_path, "r", encoding="utf-8") as f:
             data = json.load(f)
         return data.get("co_change_pairs", [])
+

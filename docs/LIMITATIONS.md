@@ -60,3 +60,4 @@ To uphold the highest academic and professional standards for KPIT Sparkle Round
 2. We do not claim complete replacement of manual integration engineers; we provide an **explainable evidence assistant**.
 3. We do not claim that synthetic link deletion equals real-world software decay; we report it as a reproducible controlled benchmark.
 4. When evidence is ambiguous, the system halts with `REVIEW_REQUIRED` and fails closed.
+

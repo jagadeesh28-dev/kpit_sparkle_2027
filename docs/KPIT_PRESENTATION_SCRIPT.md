@@ -203,3 +203,4 @@
 > *"To conclude: traditional dependency graphs provide deterministic evidence but suffer from graph blindness when links break. Pure semantic AI retrieves plausible but dangerous false positives. AURA-Impact unites deterministic engineering graphs, context-constrained semantic recovery, and mandatory safety gates.*
 > 
 > *We have proven its efficacy across real-world CPS traceability, real historical software faults, and production automotive architectures. Thank you, mentors. We are now eager to take your questions."*
+
