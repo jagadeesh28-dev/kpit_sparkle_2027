@@ -1,0 +1,6 @@
+dataset,file_a,file_b,co_change_count,co_change_support,has_direct_static_call,cosine_similarity,graph_only_recovered,embedding_only_recovered,aura_impact_recovered
+Alexandria_Evolution,control/autoware_autonomous_emergency_braking/src/node.cpp,control/autoware_vehicle_cmd_gate/src/vehicle_cmd_gate.cpp,8,0.42,False,0.5673,False,True,True
+Alexandria_Evolution,src/controller/movement/SafetyManager.java,src/controller/movement/Roundabout.java,12,0.65,False,0.8154,False,True,True
+Alexandria_Evolution,src/controller/movement/SoloFlightDirector.java,src/controller/movement/SafetyManager.java,9,0.5,True,0.7679,True,True,True
+Alexandria_Evolution,src/main/java/org/apache/commons/cli/Option.java,src/main/java/org/apache/commons/cli/OptionBuilder.java,15,0.71,True,0.9113,True,True,True
+Alexandria_Evolution,src/main/java/org/apache/commons/cli/CommandLine.java,src/main/java/org/apache/commons/cli/Parser.java,11,0.55,False,0.886,False,True,True

@@ -1,0 +1,378 @@
+{
+  "manifest_version": "1.0.0",
+  "generated_at": "2026-11-19T00:30:00Z",
+  "auditor": "THE GOAT (AURA-Impact Research Engineering)",
+  "datasets": {
+    "dronology": {
+      "name": "Dronology",
+      "domain": "Safety-Critical Cyber-Physical Systems (UAV Airspace Management)",
+      "source": "https://github.com/JaneClelandHuang/Dronology",
+      "license": "MIT",
+      "version": "0.7",
+      "files": {
+        "artifacts_xlsx": {
+          "url": "https://raw.githubusercontent.com/JaneClelandHuang/Dronology/master/Artifacts_Version07.xlsx",
+          "local_path": "data/raw/dronology/Artifacts_Version07.xlsx",
+          "sha256": "93589f91ccf605f1b2bbaebf50fe2d8981e1bb9e7c59add45d7f5a92ed7a3f8a",
+          "size_bytes": 23480
+        },
+        "SafetyManager.java": {
+          "url": "https://raw.githubusercontent.com/JaneClelandHuang/Dronology/master/Dronology/code/controller/movement/SafetyManager.java",
+          "local_path": "data/raw/dronology/src/SafetyManager.java",
+          "sha256": "d5da3a6a2cabb71405c2a3d2306ebcb64d201e0c9bf33c91871245d7bdc2a13c",
+          "size_bytes": 4470
+        },
+        "Roundabout.java": {
+          "url": "https://raw.githubusercontent.com/JaneClelandHuang/Dronology/master/Dronology/code/controller/movement/Roundabout.java",
+          "local_path": "data/raw/dronology/src/Roundabout.java",
+          "sha256": "aeabdafcc1113242d5569c73d9feb21b02d6f6f93fa65bad48825d115b7435aa",
+          "size_bytes": 5212
+        },
+        "SoloFlightDirector.java": {
+          "url": "https://raw.githubusercontent.com/JaneClelandHuang/Dronology/master/Dronology/code/controller/movement/SoloFlightDirector.java",
+          "local_path": "data/raw/dronology/src/SoloFlightDirector.java",
+          "sha256": "5288aaae1f0b5755f89039f4fc48c506faa1991b5e9157d32f61ef6fe4a87ebf",
+          "size_bytes": 4242
+        },
+        "PlatoonFollowerDirector.java": {
+          "url": "https://raw.githubusercontent.com/JaneClelandHuang/Dronology/master/Dronology/code/controller/movement/PlatoonFollowerDirector.java",
+          "local_path": "data/raw/dronology/src/PlatoonFollowerDirector.java",
+          "sha256": "fa7c53c4a1e2c13866931f1933a9f7029696cbc3b7f77db6448ce68206ccf8c6",
+          "size_bytes": 1482
+        },
+        "CoordinateTransformationTest.java": {
+          "url": "https://raw.githubusercontent.com/JaneClelandHuang/Dronology/master/Dronology/test/controller/CoordinateTransformationTest.java",
+          "local_path": "data/raw/dronology/src/CoordinateTransformationTest.java",
+          "sha256": "1bc2f02e61ef64c7ce6907a5c720348e170642fb9d45ad7d83f98ac663b72dcf",
+          "size_bytes": 2467
+        }
+      }
+    },
+    "defects4j": {
+      "name": "Defects4J (Apache Commons-Cli Subset)",
+      "domain": "Historical Software Defects and Regression Test Selection",
+      "source": "https://github.com/rjust/defects4j",
+      "license": "MIT",
+      "version": "2.0.0",
+      "evaluated_bugs_count": 10,
+      "files": {
+        "active_bugs": {
+          "url": "https://raw.githubusercontent.com/rjust/defects4j/master/framework/projects/Cli/active-bugs.csv",
+          "local_path": "data/raw/defects4j/Cli/active-bugs.csv",
+          "sha256": "0f3d51162349d43e048f129007136df042bb52f4ee6897d62915e71b76fd3a54",
+          "size_bytes": 5451
+        },
+        "commit_db": {
+          "url": "https://raw.githubusercontent.com/rjust/defects4j/master/framework/projects/Cli/commit-db",
+          "local_path": "data/raw/defects4j/Cli/commit-db",
+          "sha256": "e36accd09218f63056f9692aaa74f7c0adab42b4ee75b355e37d2e0ccba50a02",
+          "size_bytes": 5387
+        },
+        "bug_1_modified": {
+          "url": "https://raw.githubusercontent.com/rjust/defects4j/master/framework/projects/Cli/modified_classes/1.src",
+          "local_path": "data/raw/defects4j/Cli/modified_classes/1.src",
+          "sha256": "717b5e6ac5148feee13970fd8b3dccecf52d56e9e08ec483b7ad44c3c1e11229",
+          "size_bytes": 35
+        },
+        "bug_1_trigger": {
+          "url": "https://raw.githubusercontent.com/rjust/defects4j/master/framework/projects/Cli/trigger_tests/1",
+          "local_path": "data/raw/defects4j/Cli/trigger_tests/1",
+          "sha256": "e1067eff4c1f9f082c53299670fd05f3f33b85c2739f211dc091b31a13e11251",
+          "size_bytes": 2739
+        },
+        "bug_1_relevant": {
+          "url": "https://raw.githubusercontent.com/rjust/defects4j/master/framework/projects/Cli/relevant_tests/1",
+          "local_path": "data/raw/defects4j/Cli/relevant_tests/1",
+          "sha256": "68fccc25ffdeb0c7835d48c1a827da05e0c22f2fa71a6b48049b721f7a4072cf",
+          "size_bytes": 419
+        },
+        "bug_1_patch": {
+          "url": "https://raw.githubusercontent.com/rjust/defects4j/master/framework/projects/Cli/patches/1.src.patch",
+          "local_path": "data/raw/defects4j/Cli/patches/1.src.patch",
+          "sha256": "5c696e0edc34cfca26a1b5c4cef8cf8e760941f4d717235952670da821dd55a1",
+          "size_bytes": 4073
+        },
+        "bug_2_modified": {
+          "url": "https://raw.githubusercontent.com/rjust/defects4j/master/framework/projects/Cli/modified_classes/2.src",
+          "local_path": "data/raw/defects4j/Cli/modified_classes/2.src",
+          "sha256": "5cf2e897b938697267eee51bc6c35499722cc493ebb7a9e82a48f0cff956c806",
+          "size_bytes": 35
+        },
+        "bug_2_trigger": {
+          "url": "https://raw.githubusercontent.com/rjust/defects4j/master/framework/projects/Cli/trigger_tests/2",
+          "local_path": "data/raw/defects4j/Cli/trigger_tests/2",
+          "sha256": "ad39287b4b18b2b6c1427d07834093545c01f9d98a202f2dc025fa175a76d717",
+          "size_bytes": 2731
+        },
+        "bug_2_relevant": {
+          "url": "https://raw.githubusercontent.com/rjust/defects4j/master/framework/projects/Cli/relevant_tests/2",
+          "local_path": "data/raw/defects4j/Cli/relevant_tests/2",
+          "sha256": "f576bdb10b5102c162de46a556cc973041709be9339d929c532889c087f09a0c",
+          "size_bytes": 423
+        },
+        "bug_2_patch": {
+          "url": "https://raw.githubusercontent.com/rjust/defects4j/master/framework/projects/Cli/patches/2.src.patch",
+          "local_path": "data/raw/defects4j/Cli/patches/2.src.patch",
+          "sha256": "d3eb143bb47666c68e419a650ad4b29c5e11101656fc20625701471f7cdbad77",
+          "size_bytes": 529
+        },
+        "bug_3_modified": {
+          "url": "https://raw.githubusercontent.com/rjust/defects4j/master/framework/projects/Cli/modified_classes/3.src",
+          "local_path": "data/raw/defects4j/Cli/modified_classes/3.src",
+          "sha256": "5e9d2d48d0468305df741b69ad2f3ffc9d7fa92b372a5e14589e5922d66a46c4",
+          "size_bytes": 35
+        },
+        "bug_3_trigger": {
+          "url": "https://raw.githubusercontent.com/rjust/defects4j/master/framework/projects/Cli/trigger_tests/3",
+          "local_path": "data/raw/defects4j/Cli/trigger_tests/3",
+          "sha256": "2a50ad531af2e4d3594c1b26f04879bba0badd18078c0952404787a413fbd1a5",
+          "size_bytes": 2835
+        },
+        "bug_3_relevant": {
+          "url": "https://raw.githubusercontent.com/rjust/defects4j/master/framework/projects/Cli/relevant_tests/3",
+          "local_path": "data/raw/defects4j/Cli/relevant_tests/3",
+          "sha256": "1bb164432d7112b8b3fd29e9fbcb9fddbc638779f7d450295df96b436797743e",
+          "size_bytes": 48
+        },
+        "bug_3_patch": {
+          "url": "https://raw.githubusercontent.com/rjust/defects4j/master/framework/projects/Cli/patches/3.src.patch",
+          "local_path": "data/raw/defects4j/Cli/patches/3.src.patch",
+          "sha256": "c3530512279c985331acbbdd78a9279e1baf4328d586fe0cc177b3866e83828e",
+          "size_bytes": 778
+        },
+        "bug_4_modified": {
+          "url": "https://raw.githubusercontent.com/rjust/defects4j/master/framework/projects/Cli/modified_classes/4.src",
+          "local_path": "data/raw/defects4j/Cli/modified_classes/4.src",
+          "sha256": "64f29a9447de955ffc881dc45cfda6474cb886406f92c7239386fbe78a0165be",
+          "size_bytes": 30
+        },
+        "bug_4_trigger": {
+          "url": "https://raw.githubusercontent.com/rjust/defects4j/master/framework/projects/Cli/trigger_tests/4",
+          "local_path": "data/raw/defects4j/Cli/trigger_tests/4",
+          "sha256": "cf67f64172cedb4513ebe4beb2ef2ea05b1d2b38cf60fb74772af5d41ff75022",
+          "size_bytes": 5555
+        },
+        "bug_4_relevant": {
+          "url": "https://raw.githubusercontent.com/rjust/defects4j/master/framework/projects/Cli/relevant_tests/4",
+          "local_path": "data/raw/defects4j/Cli/relevant_tests/4",
+          "sha256": "17a9c6d02e2da3389f50545d884cc5c2e5a5601cfa24afc194a7bd44e615f0bb",
+          "size_bytes": 534
+        },
+        "bug_4_patch": {
+          "url": "https://raw.githubusercontent.com/rjust/defects4j/master/framework/projects/Cli/patches/4.src.patch",
+          "local_path": "data/raw/defects4j/Cli/patches/4.src.patch",
+          "sha256": "95730ea3bd02e5a1c3f47b4f6d6aac40619d86bbb1a3a9c704e642ed7a365f5f",
+          "size_bytes": 705
+        },
+        "bug_5_modified": {
+          "url": "https://raw.githubusercontent.com/rjust/defects4j/master/framework/projects/Cli/modified_classes/5.src",
+          "local_path": "data/raw/defects4j/Cli/modified_classes/5.src",
+          "sha256": "9cce3b3a9963c31013586d76a1955e3720cf14d42d7f7021332dc66a091ef464",
+          "size_bytes": 28
+        },
+        "bug_5_trigger": {
+          "url": "https://raw.githubusercontent.com/rjust/defects4j/master/framework/projects/Cli/trigger_tests/5",
+          "local_path": "data/raw/defects4j/Cli/trigger_tests/5",
+          "sha256": "52d6534e960a78d29af98e41725a0b190608037bd0bfd124516839a131ab0175",
+          "size_bytes": 5324
+        },
+        "bug_5_relevant": {
+          "url": "https://raw.githubusercontent.com/rjust/defects4j/master/framework/projects/Cli/relevant_tests/5",
+          "local_path": "data/raw/defects4j/Cli/relevant_tests/5",
+          "sha256": "1d4be35dc64440b9441f63c7e4ac91d65dbdd158e26b93041aeb844ac35295f6",
+          "size_bytes": 605
+        },
+        "bug_5_patch": {
+          "url": "https://raw.githubusercontent.com/rjust/defects4j/master/framework/projects/Cli/patches/5.src.patch",
+          "local_path": "data/raw/defects4j/Cli/patches/5.src.patch",
+          "sha256": "40f2a1e3b627d074d57fe2df97c5a723c28024ae1a156126bb4bebe0636b5e15",
+          "size_bytes": 486
+        },
+        "bug_8_modified": {
+          "url": "https://raw.githubusercontent.com/rjust/defects4j/master/framework/projects/Cli/modified_classes/8.src",
+          "local_path": "data/raw/defects4j/Cli/modified_classes/8.src",
+          "sha256": "0893ec583f0572b6e24ff954c8d11cd146c587ab9dd3f3e8da05e7e4c193e44a",
+          "size_bytes": 37
+        },
+        "bug_8_trigger": {
+          "url": "https://raw.githubusercontent.com/rjust/defects4j/master/framework/projects/Cli/trigger_tests/8",
+          "local_path": "data/raw/defects4j/Cli/trigger_tests/8",
+          "sha256": "4e0d524664877988f6fdfbd961fdefe11632cd1ec1f4842533aa7429631414c4",
+          "size_bytes": 2830
+        },
+        "bug_8_relevant": {
+          "url": "https://raw.githubusercontent.com/rjust/defects4j/master/framework/projects/Cli/relevant_tests/8",
+          "local_path": "data/raw/defects4j/Cli/relevant_tests/8",
+          "sha256": "d3ff1820d8a8ee26a1532ac01a80d1c996e185f85860021c9ca91231b81ac1d8",
+          "size_bytes": 113
+        },
+        "bug_8_patch": {
+          "url": "https://raw.githubusercontent.com/rjust/defects4j/master/framework/projects/Cli/patches/8.src.patch",
+          "local_path": "data/raw/defects4j/Cli/patches/8.src.patch",
+          "sha256": "823731470ff78516a2cfad033d5529a066bcce64ae362df7afeebf36a7e5f7eb",
+          "size_bytes": 556
+        },
+        "bug_11_modified": {
+          "url": "https://raw.githubusercontent.com/rjust/defects4j/master/framework/projects/Cli/modified_classes/11.src",
+          "local_path": "data/raw/defects4j/Cli/modified_classes/11.src",
+          "sha256": "0893ec583f0572b6e24ff954c8d11cd146c587ab9dd3f3e8da05e7e4c193e44a",
+          "size_bytes": 37
+        },
+        "bug_11_trigger": {
+          "url": "https://raw.githubusercontent.com/rjust/defects4j/master/framework/projects/Cli/trigger_tests/11",
+          "local_path": "data/raw/defects4j/Cli/trigger_tests/11",
+          "sha256": "62521a02dd95fa0466cf2817501d578e0a41c8b72ee54089936c566959e0d099",
+          "size_bytes": 2817
+        },
+        "bug_11_relevant": {
+          "url": "https://raw.githubusercontent.com/rjust/defects4j/master/framework/projects/Cli/relevant_tests/11",
+          "local_path": "data/raw/defects4j/Cli/relevant_tests/11",
+          "sha256": "d3ff1820d8a8ee26a1532ac01a80d1c996e185f85860021c9ca91231b81ac1d8",
+          "size_bytes": 113
+        },
+        "bug_11_patch": {
+          "url": "https://raw.githubusercontent.com/rjust/defects4j/master/framework/projects/Cli/patches/11.src.patch",
+          "local_path": "data/raw/defects4j/Cli/patches/11.src.patch",
+          "sha256": "752d980247791f716aad64e0a2f39730f23b47b594aa8cd467dc0c923bc6b1d8",
+          "size_bytes": 571
+        },
+        "bug_12_modified": {
+          "url": "https://raw.githubusercontent.com/rjust/defects4j/master/framework/projects/Cli/modified_classes/12.src",
+          "local_path": "data/raw/defects4j/Cli/modified_classes/12.src",
+          "sha256": "8a435f2b85a952bd18644b76ccf6563aea867a0e6041be045cc9fc68b152024c",
+          "size_bytes": 33
+        },
+        "bug_12_trigger": {
+          "url": "https://raw.githubusercontent.com/rjust/defects4j/master/framework/projects/Cli/trigger_tests/12",
+          "local_path": "data/raw/defects4j/Cli/trigger_tests/12",
+          "sha256": "97a964955c8829ba2680a9ae108cbc0dc50b54d16d9d5e1f951dd4aa84346722",
+          "size_bytes": 8270
+        },
+        "bug_12_relevant": {
+          "url": "https://raw.githubusercontent.com/rjust/defects4j/master/framework/projects/Cli/relevant_tests/12",
+          "local_path": "data/raw/defects4j/Cli/relevant_tests/12",
+          "sha256": "5af46caf8cd2fd904d4ac45ea8607f4a87233e679f2894f04f041ed2caa7b71b",
+          "size_bytes": 149
+        },
+        "bug_12_patch": {
+          "url": "https://raw.githubusercontent.com/rjust/defects4j/master/framework/projects/Cli/patches/12.src.patch",
+          "local_path": "data/raw/defects4j/Cli/patches/12.src.patch",
+          "sha256": "0608d475d7956f3f10b818956aebb07d9044f2b33d77bd1dd2983db9e8a8d249",
+          "size_bytes": 1133
+        },
+        "bug_13_modified": {
+          "url": "https://raw.githubusercontent.com/rjust/defects4j/master/framework/projects/Cli/modified_classes/13.src",
+          "local_path": "data/raw/defects4j/Cli/modified_classes/13.src",
+          "sha256": "14f1f56bd81bc0642d7593dfea9900e54cde556ed9a90f86c41e6b034792c651",
+          "size_bytes": 150
+        },
+        "bug_13_trigger": {
+          "url": "https://raw.githubusercontent.com/rjust/defects4j/master/framework/projects/Cli/trigger_tests/13",
+          "local_path": "data/raw/defects4j/Cli/trigger_tests/13",
+          "sha256": "8cfd24ed2d55b8c7212200fc325cd45f72ebd39b2818827ad6c2e8d4b7118879",
+          "size_bytes": 2915
+        },
+        "bug_13_relevant": {
+          "url": "https://raw.githubusercontent.com/rjust/defects4j/master/framework/projects/Cli/relevant_tests/13",
+          "local_path": "data/raw/defects4j/Cli/relevant_tests/13",
+          "sha256": "cd19c6d9dadaea08347903bb5ce635809da507aa2a145b7436cfd5120dac3293",
+          "size_bytes": 1672
+        },
+        "bug_13_patch": {
+          "url": "https://raw.githubusercontent.com/rjust/defects4j/master/framework/projects/Cli/patches/13.src.patch",
+          "local_path": "data/raw/defects4j/Cli/patches/13.src.patch",
+          "sha256": "1b71f9b1bd0d5842a79f5d6d6c4cdeaa898fedf2750c6ad32ae3213d9b3010dd",
+          "size_bytes": 2241
+        },
+        "bug_14_modified": {
+          "url": "https://raw.githubusercontent.com/rjust/defects4j/master/framework/projects/Cli/modified_classes/14.src",
+          "local_path": "data/raw/defects4j/Cli/modified_classes/14.src",
+          "sha256": "8b37c2ce2ab04eb445e6a86bf85d6049fbab42594af521b7fdb6796219858515",
+          "size_bytes": 41
+        },
+        "bug_14_trigger": {
+          "url": "https://raw.githubusercontent.com/rjust/defects4j/master/framework/projects/Cli/trigger_tests/14",
+          "local_path": "data/raw/defects4j/Cli/trigger_tests/14",
+          "sha256": "7f73b5e60207e94aef70886992279f42ea58d03577cd8073a5be70180678e758",
+          "size_bytes": 3131
+        },
+        "bug_14_relevant": {
+          "url": "https://raw.githubusercontent.com/rjust/defects4j/master/framework/projects/Cli/relevant_tests/14",
+          "local_path": "data/raw/defects4j/Cli/relevant_tests/14",
+          "sha256": "eedd15bebf0cae18b41029eecf76276d57bcf4ba8cfa3855aa833c68d6652045",
+          "size_bytes": 1469
+        },
+        "bug_14_patch": {
+          "url": "https://raw.githubusercontent.com/rjust/defects4j/master/framework/projects/Cli/patches/14.src.patch",
+          "local_path": "data/raw/defects4j/Cli/patches/14.src.patch",
+          "sha256": "154b766013c573f86abb5acf17681015cbab60bb371c2644f2aff9d42b6f4338",
+          "size_bytes": 889
+        }
+      }
+    },
+    "autoware": {
+      "name": "Autoware.Universe (Control & Safety Stack)",
+      "domain": "Production Autonomous Vehicle Architecture (ROS 2 / C++)",
+      "source": "https://github.com/autowarefoundation/autoware.universe",
+      "license": "Apache-2.0",
+      "version": "0.53.0 (main)",
+      "files": {
+        "aeb_package_xml": {
+          "url": "https://raw.githubusercontent.com/autowarefoundation/autoware_universe/main/control/autoware_autonomous_emergency_braking/package.xml",
+          "local_path": "data/raw/autoware/control/autoware_autonomous_emergency_braking/package.xml",
+          "sha256": "7d1f80ed24ac2fa72e6de9c057c9d54545db38070a8404a3246fbac5583d770b",
+          "size_bytes": 2112
+        },
+        "aeb_cmakelists": {
+          "url": "https://raw.githubusercontent.com/autowarefoundation/autoware_universe/main/control/autoware_autonomous_emergency_braking/CMakeLists.txt",
+          "local_path": "data/raw/autoware/control/autoware_autonomous_emergency_braking/CMakeLists.txt",
+          "sha256": "fa4cef6b564019d8c59e11435b3f715bf1d7f8453092e41229372637cc729acc",
+          "size_bytes": 1187
+        },
+        "aeb_readme": {
+          "url": "https://raw.githubusercontent.com/autowarefoundation/autoware_universe/main/control/autoware_autonomous_emergency_braking/README.md",
+          "local_path": "data/raw/autoware/control/autoware_autonomous_emergency_braking/README.md",
+          "sha256": "8c847d822d95382ca1e5c3849affc1ad98584cb91d4e1c6f2a0670ceeb7c72dc",
+          "size_bytes": 22284
+        },
+        "aeb_node_cpp": {
+          "url": "https://raw.githubusercontent.com/autowarefoundation/autoware_universe/main/control/autoware_autonomous_emergency_braking/src/node.cpp",
+          "local_path": "data/raw/autoware/control/autoware_autonomous_emergency_braking/src/node.cpp",
+          "sha256": "74bf458ba31ceabd8465211d7c1bf883e2963fe283020e06a12a4c053e803811",
+          "size_bytes": 48569
+        },
+        "gate_package_xml": {
+          "url": "https://raw.githubusercontent.com/autowarefoundation/autoware_universe/main/control/autoware_vehicle_cmd_gate/package.xml",
+          "local_path": "data/raw/autoware/control/autoware_vehicle_cmd_gate/package.xml",
+          "sha256": "f76c4dfad0089c93c07381291b3c9a34c4f2a63986a6f39454d7c63ddbbd9141",
+          "size_bytes": 2000
+        },
+        "gate_cmakelists": {
+          "url": "https://raw.githubusercontent.com/autowarefoundation/autoware_universe/main/control/autoware_vehicle_cmd_gate/CMakeLists.txt",
+          "local_path": "data/raw/autoware/control/autoware_vehicle_cmd_gate/CMakeLists.txt",
+          "sha256": "585343fc4b7de432b17e948dc9702e836c427a13b6a084cda9be10953765c014",
+          "size_bytes": 1555
+        },
+        "gate_node_cpp": {
+          "url": "https://raw.githubusercontent.com/autowarefoundation/autoware_universe/main/control/autoware_vehicle_cmd_gate/src/vehicle_cmd_gate.cpp",
+          "local_path": "data/raw/autoware/control/autoware_vehicle_cmd_gate/src/vehicle_cmd_gate.cpp",
+          "sha256": "829f67ec8702312e12f11084a87e74cc792ed5168903591ab9f67da01fbe2032",
+          "size_bytes": 37173
+        }
+      }
+    },
+    "alexandria": {
+      "name": "Alexandria Historical Co-Change Dataset",
+      "domain": "Software Evolution & Co-Change Dependency Mining",
+      "source": "Empirical Git Repository Mining",
+      "license": "Open Data Commons / Research Use",
+      "files": {
+        "co_change_records": {
+          "local_path": "data/raw/alexandria/co_change_records.json",
+          "sha256": "7865eb302fb93eac740749f7882a106e5ce5945e6275ce7fd8464555ef0ee782",
+          "size_bytes": 1369
+        }
+      }
+    }
+  }
+}

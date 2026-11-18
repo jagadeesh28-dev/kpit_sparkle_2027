@@ -9,8 +9,14 @@ from typing import Dict, Any, Optional, List
 
 class NodeType(str, Enum):
     REQUIREMENT = "Requirement"
+    SAFETY_REQUIREMENT = "SafetyRequirement"
     SOFTWARE_COMPONENT = "SoftwareComponent"
     SWC = "SoftwareComponent"
+    COMPONENT = "Component"
+    ECU = "ECU"
+    SUBSYSTEM = "Subsystem"
+    SOURCE_FILE = "SourceFile"
+    FUNCTION = "Function"
     PORT = "Port"
     INTERFACE = "Interface"
     DATA_ELEMENT = "DataElement"
@@ -18,6 +24,9 @@ class NodeType(str, Enum):
     C_FUNCTION = "C_Function"
     C_VARIABLE = "C_Variable"
     TEST = "Test"
+    TEST_CASE = "TestCase"
+    COMMIT = "Commit"
+    DEFECT = "Defect"
     DIAGNOSTIC_EVENT = "DiagnosticEvent"
 
 
@@ -34,6 +43,10 @@ class RelationType(str, Enum):
     TESTS = "TESTS"
     DEPENDS_ON = "DEPENDS_ON"
     TRIGGERS = "TRIGGERS"
+    INTERFACES_WITH = "INTERFACES_WITH"
+    MODIFIES = "MODIFIES"
+    CO_CHANGES_WITH = "CO_CHANGES_WITH"
+    SAFETY_REQUIRES = "SAFETY_REQUIRES"
 
 
 class SafetyLevel(str, Enum):
@@ -91,7 +104,10 @@ class GraphEdge:
                  weight: float = 1.0,
                  source_id: Optional[str] = None,
                  target_id: Optional[str] = None,
-                 source_file: str = ""):
+                 source_file: str = "",
+                 evidence_source: str = "Static Analysis",
+                 dataset_provenance: str = "AUTOSAR",
+                 is_verified: bool = True):
         self.source = source or source_id or ""
         self.target = target or target_id or ""
         self.source_id = self.source
@@ -102,6 +118,9 @@ class GraphEdge:
         self.confidence = confidence
         self.weight = weight
         self.source_file = source_file
+        self.evidence_source = evidence_source
+        self.dataset_provenance = dataset_provenance
+        self.is_verified = is_verified
         self.metadata = metadata or {}
 
 

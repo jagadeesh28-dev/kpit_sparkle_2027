@@ -286,7 +286,8 @@ tabs = st.tabs([
     "🕸️ Impact Graph",
     "🧠 Semantic Candidates",
     "🛡️ Safety Gate & Tests",
-    "📜 Auditable Evidence"
+    "📜 Auditable Evidence",
+    "🔬 Public Dataset Evidence"
 ])
 
 # -----------------------------------------------------------------------------
@@ -652,3 +653,100 @@ with tabs[5]:
 
     with st.expander("View Full Raw JSON Trace"):
         st.json(evidence_dict)
+
+# -----------------------------------------------------------------------------
+# TAB 7: PUBLIC DATASET EMPIRICAL BENCHMARK & VALIDATION SUITE
+# -----------------------------------------------------------------------------
+with tabs[6]:
+    st.subheader("🔬 Public Dataset Validation & Empirical Evidence")
+    st.caption("Rigorous evaluation across Dronology (CPS), Defects4J (Real Bugs), Autoware.Universe (ROS 2), and Alexandria (Evolution)")
+
+    pub_tables_dir = REPO_ROOT / "results" / "tables"
+    pub_plots_dir = REPO_ROOT / "results" / "plots"
+    pub_evidence_file = REPO_ROOT / "results" / "evidence" / "evaluation_master_evidence.json"
+
+    # Master Benchmark Summary Table
+    master_sum_path = pub_tables_dir / "master_benchmark_summary.csv"
+    if master_sum_path.exists():
+        st.markdown("#### 🏆 Cross-Dataset Master Benchmark Summary")
+        df_master = pd.read_csv(master_sum_path)
+        show_dataframe(df_master)
+
+    # Sub-Dataset Selector
+    d_view = st.selectbox(
+        "Select Empirical Dataset View",
+        [
+            "1. Dronology (Controlled Link Deletion: 10%, 20%, 30%)",
+            "2. Defects4J (Real Historical Bugs RTS)",
+            "3. Autoware.Universe (Production Automotive Architecture)",
+            "4. Alexandria (Historical Git Co-Change Mining)",
+            "5. Publication Figures Gallery (All 8 Plots)"
+        ]
+    )
+
+    if d_view.startswith("1."):
+        st.markdown("#### 🛸 Dronology: Controlled Trace-Link Deletion (Multi-Seed)")
+        st.info("Demonstrates latent dependency recovery when explicit static graph links are intentionally deleted. Compares Graph-Only (blind) vs. Embedding-Only vs. AURA-Impact.")
+        dron_csv = pub_tables_dir / "dronology_link_deletion.csv"
+        if dron_csv.exists():
+            show_dataframe(pd.read_csv(dron_csv))
+        col_p1, col_p2 = st.columns(2)
+        with col_p1:
+            p1 = pub_plots_dir / "fig02_hidden_dependency_recovery_by_rate.png"
+            if p1.exists():
+                st.image(str(p1), caption="Fig 2: Traceability Recovery Under Controlled Link Deletion")
+        with col_p2:
+            p2 = pub_plots_dir / "fig07_architecture_ablation_study.png"
+            if p2.exists():
+                st.image(str(p2), caption="Fig 7: Architectural Component Contribution Ablation")
+
+    elif d_view.startswith("2."):
+        st.markdown("#### 🐞 Defects4J: Real Historical Software Defects (Commons-Cli)")
+        st.info("Evaluates whether selected regression test suites capture the genuine triggering failing tests exposing real faults while achieving test suite reduction.")
+        def_csv = pub_tables_dir / "defects4j_rts.csv"
+        if def_csv.exists():
+            show_dataframe(pd.read_csv(def_csv))
+        p3 = pub_plots_dir / "fig04_regression_test_selection_and_reduction.png"
+        if p3.exists():
+            st.image(str(p3), caption="Fig 4: Triggering Test Recall vs Test Suite Reduction on Defects4J")
+
+    elif d_view.startswith("3."):
+        st.markdown("#### 🚗 Autoware.Universe: ROS 2 / C++ Autonomous Driving Stack")
+        st.info("Demonstrates automotive package-level and component-level call graph traversal and contextual decoy suppression across AEB and Vehicle Command Gate.")
+        auto_csv = pub_tables_dir / "autoware_architecture.csv"
+        if auto_csv.exists():
+            show_dataframe(pd.read_csv(auto_csv))
+        col_p3, col_p4 = st.columns(2)
+        with col_p3:
+            p4 = pub_plots_dir / "fig01_precision_recall_f1.png"
+            if p4.exists():
+                st.image(str(p4), caption="Fig 1: Precision, Recall, and F1 across Baselines")
+        with col_p4:
+            p5 = pub_plots_dir / "fig03_false_positive_rate_comparison.png"
+            if p5.exists():
+                st.image(str(p5), caption="Fig 3: Decoy False Positive Rate Suppression")
+
+    elif d_view.startswith("4."):
+        st.markdown("#### 🔄 Alexandria: Historical Co-Change Mining")
+        st.info("Mines real historical Git commits to evaluate whether semantic similarity predicts co-changing files when no direct static call graph link exists (reported as supplementary proxy evidence).")
+        alex_csv = pub_tables_dir / "alexandria_co_change.csv"
+        if alex_csv.exists():
+            show_dataframe(pd.read_csv(alex_csv))
+
+    elif d_view.startswith("5."):
+        st.markdown("#### 📈 Publication Figures Gallery")
+        plot_files = sorted(list(pub_plots_dir.glob("*.png")))
+        for pf in plot_files:
+            st.image(str(pf), caption=pf.name)
+
+    # Download Evidence JSON
+    if pub_evidence_file.exists():
+        st.markdown("---")
+        with open(pub_evidence_file, "r", encoding="utf-8") as ef:
+            ev_json_str = ef.read()
+        st.download_button(
+            label="📥 Download Complete Public Dataset Evaluation JSON",
+            data=ev_json_str,
+            file_name="evaluation_master_evidence.json",
+            mime="application/json"
+        )

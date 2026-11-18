@@ -1,9 +1,9 @@
 {
   "version": "GATE-14-v2.0.0",
-  "timestamp": "2026-09-30T04:47:36.756671+00:00",
+  "timestamp": "2026-11-18T18:45:17.451890+00:00",
   "seed": 42,
   "dataset_fingerprint": "3bc8c11efb2398a0",
-  "canonical_config": "C:\\Users\\USER\\OneDrive\\Desktop\\KPIT_2026_aura_impact\\configs\\final.yaml",
+  "canonical_config": "C:\\Users\\JAGADEESH M\\OneDrive\\Documents\\kpit_sparkle_2027\\configs\\final.yaml",
   "canonical_threshold": 0.45,
   "model": "AURA-DomainHashEmbedder-384",
   "union_mode": "strict_union",
@@ -14,22 +14,22 @@
   "calibrated_threshold": 0.8,
   "metrics": {
     "aura_hybrid_routed": {
-      "artifact_recall": 0.6311,
-      "artifact_precision": 0.5492,
-      "artifact_f1": 0.5503,
-      "test_recall": 0.9007,
-      "test_reduction_pct": 82.29,
+      "artifact_recall": 0.5773,
+      "artifact_precision": 0.6981,
+      "artifact_f1": 0.5815,
+      "test_recall": 0.8368,
+      "test_reduction_pct": 89.12,
       "safety_recall": 1.0
     },
     "graph_only": {
-      "artifact_recall": 0.6307,
-      "artifact_precision": 0.5443,
-      "artifact_f1": 0.4557
+      "artifact_recall": 0.577,
+      "artifact_precision": 0.7276,
+      "artifact_f1": 0.4944
     },
     "embedding_context": {
-      "artifact_recall": 0.4336,
-      "artifact_precision": 0.4117,
-      "artifact_f1": 0.2667
+      "artifact_recall": 0.432,
+      "artifact_precision": 0.4091,
+      "artifact_f1": 0.2648
     }
   },
   "semantic": {
@@ -49,12 +49,12 @@
     "wilcoxon_recall_W": 5513.0,
     "wilcoxon_recall_p": 0.7480015320388294,
     "wilcoxon_prec_W": 981.0,
-    "wilcoxon_prec_p": 0.8524822123046703,
+    "wilcoxon_prec_p": 0.852692724721933,
     "bonferroni_alpha": 0.0125,
     "significant_recall": false,
     "significant_prec": false
   },
-  "run_duration_s": 3.45,
+  "run_duration_s": 1.71,
   "outputs": {
     "impact_csv": "benchmark/final/outputs/impact_results.csv",
     "regression_csv": "benchmark/final/outputs/regression_results.csv",

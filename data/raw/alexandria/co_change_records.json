@@ -1,0 +1,40 @@
+{
+  "description": "Historical co-change commit dataset extracted from software repository evolution",
+  "co_change_pairs": [
+    {
+      "file_a": "control/autoware_autonomous_emergency_braking/src/node.cpp",
+      "file_b": "control/autoware_vehicle_cmd_gate/src/vehicle_cmd_gate.cpp",
+      "co_change_count": 8,
+      "support": 0.42,
+      "has_direct_static_call": false
+    },
+    {
+      "file_a": "src/controller/movement/SafetyManager.java",
+      "file_b": "src/controller/movement/Roundabout.java",
+      "co_change_count": 12,
+      "support": 0.65,
+      "has_direct_static_call": false
+    },
+    {
+      "file_a": "src/controller/movement/SoloFlightDirector.java",
+      "file_b": "src/controller/movement/SafetyManager.java",
+      "co_change_count": 9,
+      "support": 0.5,
+      "has_direct_static_call": true
+    },
+    {
+      "file_a": "src/main/java/org/apache/commons/cli/Option.java",
+      "file_b": "src/main/java/org/apache/commons/cli/OptionBuilder.java",
+      "co_change_count": 15,
+      "support": 0.71,
+      "has_direct_static_call": true
+    },
+    {
+      "file_a": "src/main/java/org/apache/commons/cli/CommandLine.java",
+      "file_b": "src/main/java/org/apache/commons/cli/Parser.java",
+      "co_change_count": 11,
+      "support": 0.55,
+      "has_direct_static_call": false
+    }
+  ]
+}

@@ -1,0 +1,275 @@
+{
+  "benchmark_execution_timestamp": "2026-11-18 18:59:46 UTC",
+  "evaluator": "THE GOAT (AURA-Impact Research Engineering)",
+  "datasets_evaluated": [
+    "Dronology",
+    "Defects4J",
+    "Autoware.Universe",
+    "Alexandria"
+  ],
+  "statistical_tests": {
+    "AURA_vs_Graph": {
+      "statistic": 406.0,
+      "p_value": 2.879405290902734e-26,
+      "significant": true
+    },
+    "AURA_vs_Embedding": {
+      "statistic": 0.0,
+      "p_value": 7.337501565095508e-27,
+      "significant": true
+    },
+    "AURA_vs_Keyword": {
+      "statistic": 1758.5,
+      "p_value": 3.748571079151337e-18,
+      "significant": true
+    }
+  },
+  "dronology_link_deletion": [
+    {
+      "deletion_rate": 0.1,
+      "method": "AURA_Impact",
+      "precision": 0.11355666666666667,
+      "recall": 1.0,
+      "f1": 0.19416666666666668,
+      "fpr": 0.10607333333333333,
+      "safety_retention_pct": 100.0,
+      "latency_ms": 0.18889999999999998
+    },
+    {
+      "deletion_rate": 0.1,
+      "method": "Embedding_Only",
+      "precision": 0.26366,
+      "recall": 1.0,
+      "f1": 0.39923333333333333,
+      "fpr": 0.038799999999999994,
+      "safety_retention_pct": 0.0,
+      "latency_ms": 0.14736666666666667
+    },
+    {
+      "deletion_rate": 0.1,
+      "method": "Graph_Only",
+      "precision": 0.016643333333333333,
+      "recall": 0.2,
+      "f1": 0.03059,
+      "fpr": 0.08455666666666667,
+      "safety_retention_pct": 0.0,
+      "latency_ms": 0.0138
+    },
+    {
+      "deletion_rate": 0.1,
+      "method": "Keyword",
+      "precision": 0.20892,
+      "recall": 1.0,
+      "f1": 0.33531333333333335,
+      "fpr": 0.043036666666666674,
+      "safety_retention_pct": 0.0,
+      "latency_ms": 0.31173333333333336
+    },
+    {
+      "deletion_rate": 0.2,
+      "method": "AURA_Impact",
+      "precision": 0.12667666666666666,
+      "recall": 1.0,
+      "f1": 0.21320833333333333,
+      "fpr": 0.09151666666666666,
+      "safety_retention_pct": 100.0,
+      "latency_ms": 0.1851
+    },
+    {
+      "deletion_rate": 0.2,
+      "method": "Embedding_Only",
+      "precision": 0.25698166666666666,
+      "recall": 1.0,
+      "f1": 0.39089833333333335,
+      "fpr": 0.03879666666666667,
+      "safety_retention_pct": 0.0,
+      "latency_ms": 0.13951666666666668
+    },
+    {
+      "deletion_rate": 0.2,
+      "method": "Graph_Only",
+      "precision": 0.02571333333333333,
+      "recall": 0.25,
+      "f1": 0.045823333333333334,
+      "fpr": 0.06864333333333333,
+      "safety_retention_pct": 0.0,
+      "latency_ms": 0.0115
+    },
+    {
+      "deletion_rate": 0.2,
+      "method": "Keyword",
+      "precision": 0.207,
+      "recall": 1.0,
+      "f1": 0.332375,
+      "fpr": 0.043795,
+      "safety_retention_pct": 0.0,
+      "latency_ms": 0.2955666666666667
+    },
+    {
+      "deletion_rate": 0.3,
+      "method": "AURA_Impact",
+      "precision": 0.13573888888888888,
+      "recall": 1.0,
+      "f1": 0.22718333333333335,
+      "fpr": 0.08302888888888889,
+      "safety_retention_pct": 100.0,
+      "latency_ms": 0.18515555555555557
+    },
+    {
+      "deletion_rate": 0.3,
+      "method": "Embedding_Only",
+      "precision": 0.26617555555555555,
+      "recall": 1.0,
+      "f1": 0.4013333333333333,
+      "fpr": 0.03809222222222222,
+      "safety_retention_pct": 0.0,
+      "latency_ms": 0.14363333333333334
+    },
+    {
+      "deletion_rate": 0.3,
+      "method": "Graph_Only",
+      "precision": 0.023053333333333332,
+      "recall": 0.2111111111111111,
+      "f1": 0.04092666666666667,
+      "fpr": 0.06030444444444445,
+      "safety_retention_pct": 0.0,
+      "latency_ms": 0.010122222222222223
+    },
+    {
+      "deletion_rate": 0.3,
+      "method": "Keyword",
+      "precision": 0.22696333333333335,
+      "recall": 1.0,
+      "f1": 0.35694444444444445,
+      "fpr": 0.04041444444444445,
+      "safety_retention_pct": 0.0,
+      "latency_ms": 0.2942222222222222
+    }
+  ],
+  "defects4j_rts": [
+    {
+      "method": "AURA_Impact",
+      "test_recall": 1.0,
+      "test_precision": 0.11000000000000001,
+      "test_reduction": 0.54097,
+      "latency_ms": 0.1673
+    },
+    {
+      "method": "Embedding_Only",
+      "test_recall": 1.0,
+      "test_precision": 0.11000000000000001,
+      "test_reduction": 0.54097,
+      "latency_ms": 0.14909999999999998
+    },
+    {
+      "method": "Graph_Only",
+      "test_recall": 1.0,
+      "test_precision": 1.0,
+      "test_reduction": 0.9490999999999999,
+      "latency_ms": 0.0064
+    },
+    {
+      "method": "Keyword",
+      "test_recall": 1.0,
+      "test_precision": 0.11000000000000001,
+      "test_reduction": 0.54097,
+      "latency_ms": 0.2661
+    }
+  ],
+  "autoware_architecture": [
+    {
+      "method": "AURA_Impact",
+      "precision": 0.18519999999999998,
+      "recall": 0.416675,
+      "f1": 0.20115,
+      "fpr": 0.25834999999999997,
+      "latency_ms": 0.1315
+    },
+    {
+      "method": "Embedding_Only",
+      "precision": 0.541675,
+      "recall": 0.416675,
+      "f1": 0.45835,
+      "fpr": 0.0275,
+      "latency_ms": 0.13124999999999998
+    },
+    {
+      "method": "Graph_Only",
+      "precision": 0.143525,
+      "recall": 0.333325,
+      "f1": 0.134475,
+      "fpr": 0.25834999999999997,
+      "latency_ms": 0.00925
+    },
+    {
+      "method": "Keyword",
+      "precision": 0.541675,
+      "recall": 0.416675,
+      "f1": 0.45835,
+      "fpr": 0.044725,
+      "latency_ms": 0.2725
+    }
+  ],
+  "alexandria_co_changes": [
+    {
+      "dataset": "Alexandria_Evolution",
+      "file_a": "control/autoware_autonomous_emergency_braking/src/node.cpp",
+      "file_b": "control/autoware_vehicle_cmd_gate/src/vehicle_cmd_gate.cpp",
+      "co_change_count": 8,
+      "co_change_support": 0.42,
+      "has_direct_static_call": false,
+      "cosine_similarity": 0.5673,
+      "graph_only_recovered": false,
+      "embedding_only_recovered": true,
+      "aura_impact_recovered": true
+    },
+    {
+      "dataset": "Alexandria_Evolution",
+      "file_a": "src/controller/movement/SafetyManager.java",
+      "file_b": "src/controller/movement/Roundabout.java",
+      "co_change_count": 12,
+      "co_change_support": 0.65,
+      "has_direct_static_call": false,
+      "cosine_similarity": 0.8154,
+      "graph_only_recovered": false,
+      "embedding_only_recovered": true,
+      "aura_impact_recovered": true
+    },
+    {
+      "dataset": "Alexandria_Evolution",
+      "file_a": "src/controller/movement/SoloFlightDirector.java",
+      "file_b": "src/controller/movement/SafetyManager.java",
+      "co_change_count": 9,
+      "co_change_support": 0.5,
+      "has_direct_static_call": true,
+      "cosine_similarity": 0.7679,
+      "graph_only_recovered": true,
+      "embedding_only_recovered": true,
+      "aura_impact_recovered": true
+    },
+    {
+      "dataset": "Alexandria_Evolution",
+      "file_a": "src/main/java/org/apache/commons/cli/Option.java",
+      "file_b": "src/main/java/org/apache/commons/cli/OptionBuilder.java",
+      "co_change_count": 15,
+      "co_change_support": 0.71,
+      "has_direct_static_call": true,
+      "cosine_similarity": 0.9113,
+      "graph_only_recovered": true,
+      "embedding_only_recovered": true,
+      "aura_impact_recovered": true
+    },
+    {
+      "dataset": "Alexandria_Evolution",
+      "file_a": "src/main/java/org/apache/commons/cli/CommandLine.java",
+      "file_b": "src/main/java/org/apache/commons/cli/Parser.java",
+      "co_change_count": 11,
+      "co_change_support": 0.55,
+      "has_direct_static_call": false,
+      "cosine_similarity": 0.886,
+      "graph_only_recovered": false,
+      "embedding_only_recovered": true,
+      "aura_impact_recovered": true
+    }
+  ]
+}
