@@ -1,8 +1,28 @@
 import { memo } from 'react';
 import { Handle, Position } from '@xyflow/react';
-import { FileText, Box, ArrowRightLeft, Code2, TestTube, Play, ShieldAlert } from 'lucide-react';
+import {
+  FileText, Box, ArrowRightLeft, Code2, TestTube, Play, ShieldAlert,
+  Cpu, Network, AlertTriangle, GitCommit
+} from 'lucide-react';
 
-type NodeTypeKey = 'Requirement' | 'SoftwareComponent' | 'Port' | 'Runnable' | 'C_Function' | 'C_Variable' | 'Test' | 'ChangeSeed' | 'default';
+type NodeTypeKey =
+  | 'Requirement'
+  | 'SafetyRequirement'
+  | 'SoftwareComponent'
+  | 'Port'
+  | 'Runnable'
+  | 'C_Function'
+  | 'C_Variable'
+  | 'Function'
+  | 'SourceFile'
+  | 'ECU'
+  | 'Subsystem'
+  | 'Test'
+  | 'TestCase'
+  | 'Defect'
+  | 'Commit'
+  | 'ChangeSeed'
+  | 'default';
 
 const TYPE_CONFIG: Record<NodeTypeKey, {
   icon: any;
@@ -20,9 +40,17 @@ const TYPE_CONFIG: Record<NodeTypeKey, {
     bodyBorder: '#fbbf24',
     bodyBg: '#fffbeb',
   },
+  SafetyRequirement: {
+    icon: ShieldAlert,
+    label: 'Safety Req',
+    headerBg: '#dc2626',   // red-600
+    headerText: '#ffffff',
+    bodyBorder: '#f87171',
+    bodyBg: '#fef2f2',
+  },
   SoftwareComponent: {
     icon: Box,
-    label: 'Software Component',
+    label: 'SW Component',
     headerBg: '#ea580c',   // orange-600
     headerText: '#ffffff',
     bodyBorder: '#fb923c',
@@ -52,6 +80,14 @@ const TYPE_CONFIG: Record<NodeTypeKey, {
     bodyBorder: '#60a5fa',
     bodyBg: '#eff6ff',
   },
+  Function: {
+    icon: Code2,
+    label: 'Function',
+    headerBg: '#2563eb',
+    headerText: '#ffffff',
+    bodyBorder: '#60a5fa',
+    bodyBg: '#eff6ff',
+  },
   C_Variable: {
     icon: Code2,
     label: 'C Variable',
@@ -60,6 +96,30 @@ const TYPE_CONFIG: Record<NodeTypeKey, {
     bodyBorder: '#60a5fa',
     bodyBg: '#eff6ff',
   },
+  SourceFile: {
+    icon: Code2,
+    label: 'Source File',
+    headerBg: '#0d9488',   // teal-600
+    headerText: '#ffffff',
+    bodyBorder: '#2dd4bf',
+    bodyBg: '#f0fdfa',
+  },
+  ECU: {
+    icon: Cpu,
+    label: 'ECU',
+    headerBg: '#4f46e5',   // indigo-600
+    headerText: '#ffffff',
+    bodyBorder: '#818cf8',
+    bodyBg: '#eef2ff',
+  },
+  Subsystem: {
+    icon: Network,
+    label: 'Subsystem',
+    headerBg: '#0284c7',   // sky-600
+    headerText: '#ffffff',
+    bodyBorder: '#38bdf8',
+    bodyBg: '#f0f9ff',
+  },
   Test: {
     icon: TestTube,
     label: 'Test Case',
@@ -67,6 +127,30 @@ const TYPE_CONFIG: Record<NodeTypeKey, {
     headerText: '#ffffff',
     bodyBorder: '#22d3ee',
     bodyBg: '#ecfeff',
+  },
+  TestCase: {
+    icon: TestTube,
+    label: 'Test Case',
+    headerBg: '#0891b2',
+    headerText: '#ffffff',
+    bodyBorder: '#22d3ee',
+    bodyBg: '#ecfeff',
+  },
+  Defect: {
+    icon: AlertTriangle,
+    label: 'Defect',
+    headerBg: '#be123c',   // rose-700
+    headerText: '#ffffff',
+    bodyBorder: '#fb7185',
+    bodyBg: '#fff1f2',
+  },
+  Commit: {
+    icon: GitCommit,
+    label: 'Commit',
+    headerBg: '#475569',   // slate-600
+    headerText: '#ffffff',
+    bodyBorder: '#94a3b8',
+    bodyBg: '#f8fafc',
   },
   ChangeSeed: {
     icon: ShieldAlert,
@@ -88,9 +172,13 @@ const TYPE_CONFIG: Record<NodeTypeKey, {
 
 const ASIL_CONFIG: Record<string, { bg: string; text: string; border: string }> = {
   'ASIL-D': { bg: '#dc2626', text: '#ffffff', border: '#b91c1c' },
+  'ASIL_D': { bg: '#dc2626', text: '#ffffff', border: '#b91c1c' },
   'ASIL-C': { bg: '#f97316', text: '#ffffff', border: '#ea580c' },
+  'ASIL_C': { bg: '#f97316', text: '#ffffff', border: '#ea580c' },
   'ASIL-B': { bg: '#eab308', text: '#1c1917', border: '#ca8a04' },
+  'ASIL_B': { bg: '#eab308', text: '#1c1917', border: '#ca8a04' },
   'ASIL-A': { bg: '#fde047', text: '#1c1917', border: '#ca8a04' },
+  'ASIL_A': { bg: '#fde047', text: '#1c1917', border: '#ca8a04' },
   'QM':     { bg: '#e5e7eb', text: '#374151', border: '#d1d5db' },
 };
 
@@ -103,7 +191,7 @@ const CustomNode = ({ data, selected }: any) => {
   const Icon = config.icon;
 
   const asilKey = safety_level && safety_level !== 'QM' ? safety_level : null;
-  const asilStyle = asilKey ? ASIL_CONFIG[asilKey] : null;
+  const asilStyle = asilKey ? (ASIL_CONFIG[asilKey] || null) : null;
 
   // Override header for impact states
   let headerBg = config.headerBg;
@@ -166,7 +254,7 @@ const CustomNode = ({ data, selected }: any) => {
             borderRadius: 4, padding: '1px 5px',
             flexShrink: 0,
           }}>
-            {safety_level}
+            {safety_level.replace('_', '-')}
           </span>
         )}
       </div>

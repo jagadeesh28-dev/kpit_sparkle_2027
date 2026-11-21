@@ -100,6 +100,7 @@ pre{margin:0;background:var(--row);border:1px solid var(--line);border-radius:3p
   <div class="crumb">ADAS_Gen3_ACC / Analysis / Impact Analysis</div>
   <h1>Impact Analysis — ISO 26262-8 §8 Change Management</h1>
   <div class="sub1">Pick a changed artifact to see what it affects and which tests must run.</div>
+  <div style="background:rgba(217,138,0,0.1);border-left:3px solid var(--amb);padding:6px 12px;margin:8px 0;font-size:11px;color:var(--mute)"><b>Research Evaluation Notice:</b> This dashboard demonstrates an experimental ISO 26262-8 change impact intelligence prototype for KPIT Sparkle 2027. It evaluates safety invariants; it does not claim certified automotive functional safety deployment.</div>
 
   <div class="tool">
     <label for="chg">Changed artifact</label>
@@ -206,7 +207,67 @@ g.addEventListener('keydown',function(e){var x=e.target.closest('.node');if(x&&e
 pick(0);
 document.getElementById('json').textContent=JSON.stringify({change:'ACC_ComputeTargetSpeed()',baseline:'rel/2026.09',stage1:{depth:3,artifacts:8},stage2:{filter:'same_ecu',artifacts:3},tests:{total:1248,selected:221,reduction:'82.29%'},safety_gate:{triggered:true,asil:'D',injected:['TC-SAF-0007','TC-SAF-0011','TC-SAF-0019','...11 more']},sha256:'9f2c…a41e'},null,2);
 document.querySelectorAll('.tabs button').forEach(function(b){b.onclick=function(){document.querySelectorAll('.tabs button,.pane').forEach(function(x){x.classList.remove('on')});b.classList.add('on');document.getElementById(b.dataset.p).classList.add('on')}});
-document.getElementById('run').onclick=function(){var s=document.getElementById('stat');s.textContent='Analysing…';setTimeout(function(){s.textContent='Done · 68 ms'},500)};
+var isLiveBackend = false;
+function checkBackend() {
+  fetch('http://localhost:8000/health', { method: 'GET' })
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      isLiveBackend = (data.status === 'healthy');
+      var s = document.getElementById('stat');
+      if (isLiveBackend) {
+        s.innerHTML = '<span style="color:var(--grn);font-weight:600">● LIVE BACKEND (Port 8000)</span>';
+      } else {
+        s.innerHTML = '<span style="color:var(--amb);font-weight:600">● OFFLINE DEMO (Embedded Dataset)</span>';
+      }
+    })
+    .catch(function(){
+      isLiveBackend = false;
+      document.getElementById('stat').innerHTML = '<span style="color:var(--amb);font-weight:600">● OFFLINE DEMO (Embedded Dataset)</span>';
+    });
+}
+checkBackend();
+
+document.getElementById('run').onclick=function(){
+  var s=document.getElementById('stat');
+  s.textContent='Analysing…';
+  if (isLiveBackend) {
+    fetch('http://localhost:8000/analyze', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        artifact_id: 'REQ_AEB_001',
+        artifact_type: 'Requirement',
+        subsystem: 'ADAS',
+        ecu: 'VCU',
+        change_type: 'MODIFICATION',
+        after_content: 'void calibrate_aeb_threshold() { aeb_decel_threshold = 7.5; }',
+        change_semantics: 'Calibrated AEB autonomous braking deceleration threshold to 7.5 m/s^2',
+        force_semantic: false,
+        filter_subsystem: true
+      })
+    })
+    .then(function(res){ return res.json(); })
+    .then(function(data){
+      if (data.status === 'success') {
+        document.getElementById('k1').textContent = data.impact_summary.total_impacts_count;
+        document.getElementById('k2').textContent = data.test_summary.test_reduction_pct + '%';
+        document.getElementById('k3').textContent = data.test_summary.mandatory_safety_tests_count;
+        document.getElementById('k4').textContent = data.latencies.total_ms + ' ms';
+        document.getElementById('json').textContent = JSON.stringify(data, null, 2);
+        s.innerHTML = '<span style="color:var(--grn);font-weight:600">Done · ' + data.latencies.total_ms + ' ms (Live Backend)</span>';
+      } else {
+        throw new Error('Analysis failed');
+      }
+    })
+    .catch(function(){
+      s.innerHTML = '<span style="color:var(--amb);font-weight:600">Done · 68 ms (Offline Demo Fallback)</span>';
+    });
+  } else {
+    setTimeout(function(){
+      s.innerHTML = '<span style="color:var(--amb);font-weight:600">Done · 68 ms (Offline Demo)</span>';
+    }, 400);
+  }
+};
 document.getElementById('th').onclick=function(){var r=document.documentElement,d=r.dataset.theme=='dark'||(!r.dataset.theme&&matchMedia('(prefers-color-scheme:dark)').matches);r.dataset.theme=d?'light':'dark'};
 </script>
 </body>
