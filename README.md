@@ -160,7 +160,9 @@ KPIT_2026_aura_impact/
 │   ├── manifests/                     # Download provenance & SHA-256 checksums
 │   ├── raw/                           # Downloaded public dataset files (Dronology, Defects4J, Autoware)
 │   └── projects/                      # Canonical synthetic benchmark projects (ADAS, Powertrain, EV)
-├── dashboard/                         # Streamlit Interactive Explorer (dashboard/app.py)
+├── hmi_frontend/                     # Modern React 19 / Vite / ReactFlow Interactive HMI
+├── AURA-Impact — ISO 26262 Impact Analysis HMI.html # Standalone Zero-Dependency Production HMI
+├── src/api/server.py                 # FastAPI High-Throughput REST API Backend
 ├── results/
 │   ├── plots/                         # 8 Publication-quality figures (PNG)
 │   ├── tables/                        # Standardized benchmark result CSVs
@@ -220,11 +222,29 @@ python evaluation/experiments/run_all_experiments.py
 ```
 *Executes evaluations across Dronology, Defects4J, Autoware, and Alexandria in ~1.3 seconds, generating summary CSV tables and publication plots.*
 
-### 5. Launch the Interactive Exploration Dashboard
+### 5. Launch the Production HMI Dashboard & API Backend
+
+#### Option A: Standalone Zero-Dependency HMI (Instant Preview)
+Double-click or open in your browser:
 ```bash
-streamlit run dashboard/app.py
+# Windows
+start "AURA-Impact — ISO 26262 Impact Analysis HMI.html"
 ```
-*Opens the web-based visualizer. Explore live scenario graphs, semantic candidate scorings, and the new **Tab 7: "🔬 Public Dataset Evidence"**.*
+*Provides an instant, zero-dependency interactive dashboard featuring ISO 26262 ASIL-D impact visualization, interactive SVG graph navigation, regression suite inspection, and audit-ready JSON export.*
+
+#### Option B: Full-Stack React Flow HMI Workbench
+1. **Start the FastAPI Backend Server:**
+   ```bash
+   python src/api/server.py
+   # Or: uvicorn src.api.server:app --port 8000
+   ```
+2. **Launch the React HMI Frontend:**
+   ```bash
+   cd hmi_frontend
+   npm install
+   npm run dev
+   ```
+*Opens `http://localhost:5173` featuring interactive React Flow DAG layout, ELK graph clustering, ASIL properties inspector, and live pipeline change impact analysis.*
 
 ---
 
