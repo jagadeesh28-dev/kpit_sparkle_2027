@@ -1,0 +1,189 @@
+{
+  "scenarios": {
+    "scenario_braking_calibration": {
+      "status_code": 200,
+      "roundtrip_elapsed_ms": 66.44,
+      "pipeline_latency_ms": 0.086,
+      "total_impacts": 4,
+      "structural_impacts": 4,
+      "semantic_impacts": 0,
+      "selected_tests": 1,
+      "total_tests": 100,
+      "test_reduction_pct": 99.0,
+      "safety_tests_retained": 1,
+      "safety_invariant_held": true,
+      "rejected_candidates": 0,
+      "accepted_candidates": 0,
+      "rejection_reasons": [],
+      "test_ids": [
+        "TC_AEB_001"
+      ]
+    },
+    "scenario_latent_thermal_coupling": {
+      "status_code": 200,
+      "roundtrip_elapsed_ms": 10.15,
+      "pipeline_latency_ms": 0.455,
+      "total_impacts": 0,
+      "structural_impacts": 0,
+      "semantic_impacts": 0,
+      "selected_tests": 0,
+      "total_tests": 100,
+      "test_reduction_pct": 100.0,
+      "safety_tests_retained": 0,
+      "safety_invariant_held": true,
+      "rejected_candidates": 1,
+      "accepted_candidates": 0,
+      "rejection_reasons": [
+        "Similarity score (0.186) below threshold (0.450)"
+      ],
+      "test_ids": []
+    },
+    "scenario_decoy_attack": {
+      "status_code": 200,
+      "roundtrip_elapsed_ms": 7.81,
+      "pipeline_latency_ms": 0.434,
+      "total_impacts": 0,
+      "structural_impacts": 0,
+      "semantic_impacts": 0,
+      "selected_tests": 0,
+      "total_tests": 100,
+      "test_reduction_pct": 100.0,
+      "safety_tests_retained": 0,
+      "safety_invariant_held": true,
+      "rejected_candidates": 6,
+      "accepted_candidates": 0,
+      "rejection_reasons": [
+        "Similarity score (0.230) below threshold (0.450)",
+        "Similarity score (0.179) below threshold (0.450)",
+        "Similarity score (0.154) below threshold (0.450)",
+        "Similarity score (0.138) below threshold (0.450)",
+        "Similarity score (0.128) below threshold (0.450)",
+        "Similarity score (0.066) below threshold (0.450)"
+      ],
+      "test_ids": []
+    },
+    "scenario_inverter_runaway": {
+      "status_code": 200,
+      "roundtrip_elapsed_ms": 8.86,
+      "pipeline_latency_ms": 0.367,
+      "total_impacts": 0,
+      "structural_impacts": 0,
+      "semantic_impacts": 0,
+      "selected_tests": 0,
+      "total_tests": 100,
+      "test_reduction_pct": 100.0,
+      "safety_tests_retained": 0,
+      "safety_invariant_held": true,
+      "rejected_candidates": 10,
+      "accepted_candidates": 0,
+      "rejection_reasons": [
+        "Subsystem mismatch: Candidate belongs to 'ADAS', expected 'CHASSIS'",
+        "Subsystem mismatch: Candidate belongs to 'ADAS', expected 'CHASSIS'",
+        "Subsystem mismatch: Candidate belongs to 'ADAS', expected 'CHASSIS'",
+        "Subsystem mismatch: Candidate belongs to 'Body_Electronics', expected 'CHASSIS'",
+        "Subsystem mismatch: Candidate belongs to 'ADAS', expected 'CHASSIS'",
+        "Subsystem mismatch: Candidate belongs to 'ADAS', expected 'CHASSIS'",
+        "Subsystem mismatch: Candidate belongs to 'ADAS', expected 'CHASSIS'",
+        "Subsystem mismatch: Candidate belongs to 'Powertrain', expected 'CHASSIS'",
+        "Subsystem mismatch: Candidate belongs to 'Body_Electronics', expected 'CHASSIS'",
+        "Subsystem mismatch: Candidate belongs to 'ADAS', expected 'CHASSIS'"
+      ],
+      "test_ids": []
+    }
+  },
+  "attacks": [
+    {
+      "name": "Attack 1: Empty Candidates",
+      "status": "PASSED",
+      "detail": "Mandatory test preserved when candidate list is empty"
+    },
+    {
+      "name": "Attack 2: Graph Failure",
+      "status": "PASSED",
+      "detail": "Mandatory tests preserved when graph traversal finds zero nodes"
+    },
+    {
+      "name": "Attack 3: Semantic Failure",
+      "status": "PASSED",
+      "detail": "Semantic failure does not drop mandatory test"
+    },
+    {
+      "name": "Attack 4: Missing Metadata",
+      "status": "PASSED",
+      "detail": "Missing safety classification safely defaults and retains test"
+    },
+    {
+      "name": "Attack 5: Low Confidence Pruning Immunity",
+      "status": "PASSED",
+      "detail": "ASIL-D test unconditionally marked as retained safety test"
+    },
+    {
+      "name": "Attack 6: Duplicate Tests Deduplication",
+      "status": "PASSED",
+      "detail": "Duplicates deduplicated safely without dropping test"
+    },
+    {
+      "name": "Attack 7: Case Variations",
+      "status": "PASSED",
+      "detail": "Case and underscore variations normalized correctly"
+    },
+    {
+      "name": "Attack 8: ASIL-C Retention",
+      "status": "PASSED",
+      "detail": "ASIL-C test retained as safety-critical"
+    },
+    {
+      "name": "Attack 9: ASIL-D Retention",
+      "status": "PASSED",
+      "detail": "ASIL-D test retained as safety-critical"
+    },
+    {
+      "name": "Attack 10: Multi-Subsystem Retention",
+      "status": "PASSED",
+      "detail": "10 multi-subsystem mandatory tests all retained"
+    },
+    {
+      "name": "Attack 11: Attempted Bypass Detection",
+      "status": "PASSED",
+      "detail": "SafetyInvariantViolationError raised on bypass attempt"
+    },
+    {
+      "name": "Attack 12: Mathematical Invariant T_safe <= T_selected",
+      "status": "PASSED",
+      "detail": "Formal invariant verified"
+    },
+    {
+      "name": "Attack 13: Empty all_tests and None mandatory",
+      "status": "PASSED",
+      "detail": "Null mandatory set handled cleanly without error"
+    },
+    {
+      "name": "Attack 14: Non-critical QM Not Safety-Retained",
+      "status": "PASSED",
+      "detail": "QM tests are not falsely claimed as safety retained"
+    },
+    {
+      "name": "Attack 15: Stress Test 100 Mandatory Tests",
+      "status": "PASSED",
+      "detail": "100/100 stress mandatory tests retained"
+    }
+  ],
+  "security": {
+    "path_traversal": {
+      "status_code": 422,
+      "blocked": true
+    },
+    "oversized_diff": {
+      "status_code": 422,
+      "blocked": true
+    },
+    "cors": {
+      "status_code": 200,
+      "allow_origin": "http://localhost:5173"
+    },
+    "xss_handling": {
+      "status_code": 200,
+      "sanitized_or_safe": true
+    }
+  }
+}

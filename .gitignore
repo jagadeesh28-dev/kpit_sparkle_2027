@@ -48,5 +48,5 @@ htmlcov/
 Thumbs.db
 
 # Runtime test analysis dumps
-reports/analysis/ANALYSIS_REQ_AEB_014_1790*
+reports/analysis/ANALYSIS_*
 

@@ -5,7 +5,8 @@
 [![Architecture: Locked B](https://img.shields.io/badge/Architecture-Bounded%20Graph%20%2B%20Strict%20Union%20Fallback-008080.svg?style=for-the-badge)](#locked-architecture-architecture-b)
 [![Public Datasets Validated](https://img.shields.io/badge/Public_Datasets-Dronology%20%7C%20Defects4J%20%7C%20Autoware%20%7C%20Alexandria-8A2BE2.svg?style=for-the-badge)](#-public-dataset-empirical-benchmarks)
 [![Safety Invariant](https://img.shields.io/badge/ISO%2026262-100%25%20Mandatory%20Safety%20Retention-success.svg?style=for-the-badge)](#safety-guarantee--invariant-distinction)
-[![Tests Passing](https://img.shields.io/badge/Tests-256%20Passed%20%7C%20100%25%20Verified-brightgreen.svg?style=for-the-badge)](#testing--verification)
+[![Tests Passing](https://img.shields.io/badge/Tests-277%20Passed%20%7C%20100%25%20Verified-brightgreen.svg?style=for-the-badge)](#testing--verification)
+[![Playwright E2E](https://img.shields.io/badge/E2E-21%20Steps%20Verified-blueviolet.svg?style=for-the-badge)](#testing--verification)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue.svg?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 
 ---
@@ -210,13 +211,46 @@ cd kpit_sparkle_2027
 pip install -r requirements.txt
 ```
 
-### 3. Run Automated Tests (256 Tests)
+### 3. Run Automated Tests
+
+#### Backend Test Suite (277 Tests)
 ```bash
 python -m pytest tests/ -v
 ```
-*Executes the complete 256-test regression, adversarial, and safety invariant test suite.*
+*Executes the complete 277-test regression, adversarial, and safety invariant test suite across 18 test directories.*
 
-### 4. Run Master Public Dataset Benchmark Pipeline
+#### Frontend Unit & Contract Tests (4 Tests)
+```bash
+cd hmi_frontend
+npm test
+```
+*Executes Vitest API contract validation, ASIL normalization, and preset schema checks.*
+
+#### Automated Browser E2E Suite (21 Steps)
+```bash
+# In one terminal: Start backend
+python -m uvicorn src.api.server:app --port 8000
+
+# In second terminal: Start frontend preview and run Playwright
+cd hmi_frontend
+npm run build
+npx vite preview --port 5173
+node e2e_acceptance_audit.cjs
+```
+*Runs headless Chrome across 21 verification steps, testing all 4 scenarios, graph node clicks, decoy rejection inspection, and capturing 12 screenshots into `artifacts/screenshots/`.*
+
+### 4. Independent Acceptance Audit Reports
+All formal acceptance reports generated during hostile independent validation are cataloged in `docs/`:
+- [FINAL_ACCEPTANCE_AUDIT.md](file:///c:/Users/JAGADEESH%20M/OneDrive/Documents/kpit_sparkle_2027/docs/FINAL_ACCEPTANCE_AUDIT.md) — Baseline verification & environment audit.
+- [INDEPENDENT_TEST_RESULTS.md](file:///c:/Users/JAGADEESH%20M/OneDrive/Documents/kpit_sparkle_2027/docs/INDEPENDENT_TEST_RESULTS.md) — 277 Python + 4 Vitest + Vite build reproduction.
+- [SCIENTIFIC_EVIDENCE_AUDIT.md](file:///c:/Users/JAGADEESH%20M/OneDrive/Documents/kpit_sparkle_2027/docs/SCIENTIFIC_EVIDENCE_AUDIT.md) — Mathematical metrics, dataset provenance, latency scope.
+- [SAFETY_GATE_ACCEPTANCE_REPORT.md](file:///c:/Users/JAGADEESH%20M/OneDrive/Documents/kpit_sparkle_2027/docs/SAFETY_GATE_ACCEPTANCE_REPORT.md) — 15 adversarial safety attacks against fail-closed invariant.
+- [SCENARIO_ACCEPTANCE_REPORT.md](file:///c:/Users/JAGADEESH%20M/OneDrive/Documents/kpit_sparkle_2027/docs/SCENARIO_ACCEPTANCE_REPORT.md) — 4 curated automotive demonstration scenarios.
+- [BROWSER_E2E_ACCEPTANCE_REPORT.md](file:///c:/Users/JAGADEESH%20M/OneDrive/Documents/kpit_sparkle_2027/docs/BROWSER_E2E_ACCEPTANCE_REPORT.md) — 21-step Playwright flow & 12 screenshots.
+- [FINAL_SECURITY_ACCEPTANCE.md](file:///c:/Users/JAGADEESH%20M/OneDrive/Documents/kpit_sparkle_2027/docs/FINAL_SECURITY_ACCEPTANCE.md) — OWASP API security, path traversal, CORS, and XSS audit.
+- [DASHBOARD_DATA_LINEAGE_AUDIT.md](file:///c:/Users/JAGADEESH%20M/OneDrive/Documents/kpit_sparkle_2027/docs/DASHBOARD_DATA_LINEAGE_AUDIT.md) — Closed data provenance trace from Engine to UI.
+
+### 5. Run Master Public Dataset Benchmark Pipeline
 ```bash
 python evaluation/experiments/run_all_experiments.py
 ```
